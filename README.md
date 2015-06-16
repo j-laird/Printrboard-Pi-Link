@@ -26,6 +26,14 @@ It is expected that a short ribbon cable can be supplied for users who want the 
 
 In order to enable the hardware UART on the Printrboard (rather than the USB CDC serial port), use of this board requires a special build of firmware.  Standard firmware versions will not communicate directly, although it would be possible to communicate using the traditional micro USB cable to one of the Raspberry Pi's USB ports.
 
+**RASPBERRY PI / OCTOPRINT SETUP**
+
+The hardware UART on the RPI must be anabled.  Run raspi-config and select Advanced Options.  Under Serial, disable login over serial port.
+
+Modify /boot/config.txt to add init_uart_clock=4000000
+
+TBD: add GPIO / wiringpi setup here.
+
 **DISCLAIMERS**
 
 Although using Raspberry Pi / Octoprint is a fabulous way to run a print job semi-unattended, and this board enables additional features in that regard, it is **categorically not endorsed/recommended** as a safe practice.  The additional safety and remote shutdown features should not encourage you to leave the printer at home/work printing.  For those of you who void warranties, tear up manuals, and eat your steak rare -- hopefully this provides additional safety margin.
