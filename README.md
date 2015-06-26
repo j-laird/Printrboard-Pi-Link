@@ -30,13 +30,32 @@ It is expected that a short ribbon cable can be supplied for users who want the 
 
 In order to enable the hardware UART on the Printrboard (rather than the USB CDC serial port), use of this board requires a special build of firmware.  Standard firmware versions will not communicate directly, although it would be possible to communicate using the traditional micro USB cable to one of the Raspberry Pi's USB ports.
 
+For rev D, use:  https://github.com/j-laird/Marlin/releases/tag/PiBachelor--V3
+For rev F4/F5, use: https://github.com/j-laird/Marlin/releases/tag/PiLassen-V3
+
 **RASPBERRY PI / OCTOPRINT SETUP**
 
 The hardware UART on the RPI must be anabled.  Run raspi-config and select Advanced Options.  Under Serial, disable login over serial port.
 
 Modify /boot/config.txt to add init_uart_clock=4000000
 
-TBD: add GPIO / wiringpi setup here.
+Install WiringPi using the instructions found here: https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/
+
+Modify ~/.octoprint/config.yaml to add the following lines under system: actions:
+
+  - action: shutdown printbot
+    command: gpio -g write 2 1
+    name: Kill Printrboard 12V supply
+  - action: poweron printrbot
+    command: gpio -g write 2 0
+    name: Enable Printrboard 12V supply
+
+Modify /etc/init.d/octoprint to add the following lines in the do_start() function, right above RETVAL="$?"
+
+    gpio -g export 2 out
+    gpio -g mode 2 out
+    gpio -g write 2 0
+
 
 **DISCLAIMERS**
 
