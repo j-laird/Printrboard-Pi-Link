@@ -20,6 +20,8 @@ The Printrboard-Pi-Link is intended to connect a Printrbot Printrboard with a ne
 
 All parts but L1 can be sourced from Digikey. A shopping cart with enough parts to build this (minus ribbon cable and 16awg wire) can be found at http://www.digikey.com/short/71w84q.   NOTE THIS CART IS FOR REV B.  Rev A used a different fuse holder.
 
+A Bill of Materials can be found here: https://docs.google.com/spreadsheets/d/1JWQViEhnYA_FKTI_PxGergLy6LZkPQN6mZyLyM8gfQU/edit?usp=sharing
+
 **CONFIGURATION**
 
 When creating the Printrboard-Pi-Link, I recognized that some printrbot models "hide" the Printrboard underneath the printer, while others leave the board exposed.  When this board is installed on the Raspberry Pi, only two cables need be connected from this board to the Printrboard: a ribbon cable to EXP1, and a 4/6-wire power cable to the power connection.  
