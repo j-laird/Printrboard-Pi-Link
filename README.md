@@ -37,7 +37,7 @@ For rev F4/F5, use: https://github.com/j-laird/Marlin/releases/tag/PiLassen-V3
 
 **RASPBERRY PI / OCTOPRINT SETUP**
 
-The hardware UART on the RPI must be anabled.  Run raspi-config and select Advanced Options.  Under Serial, disable login over serial port.
+The hardware UART on the RPI must be enabled.  Run raspi-config and select Advanced Options.  Under Serial, disable login over serial port.
 
 Modify /boot/config.txt to add init_uart_clock=4000000
 
