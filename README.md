@@ -1,5 +1,5 @@
 # Printrboard-Pi-Link
-Printed Circuit Board Assembly linking a Printrbot Printrboard and Raspberry Pi
+Printed Circuit Board Assembly linking a Printrbot Printrboard and Raspberry Pi. Originally conceived as a way to connect a model A+ Raspberry Pi to a Printrboard without using the single USB port it has been expanded to include several convenience and safety features.
 
 ![Printrboard Pi Link](http://garthvh.com/assets/img/printrboardpilink/printrboard_pi_link_01.jpg "Printrboard Pi Link")
 
@@ -18,7 +18,17 @@ The Printrboard-Pi-Link is intended to connect a Printrbot Printrboard with a ne
 * Exposes an external safety 12v shutoff for user-supplied circuits (smoke detector, etc.)
 * Adds automotive-style ATO fuse in 12V path
 
+![Printrboard Pi Link Board Top](http://garthvh.com/assets/img/printrboardpilink/board_top_rev_b.png "Printrboard Pi Link Board Top")
+
+![Printrboard Pi Link Board Top](http://garthvh.com/assets/img/printrboardpilink/board_bottom_rev_b.png "Printrboard Pi Link Board Bottom")
+
 ### BUILD INFORMATION
+
+If you would like to make your own Printrboard-Pi-Link and provide some beta feedback, please be aware that the Printrboard-Pi-Link board uses some tiny surface mount components and is an advanced soldering project that will also require flashing the firmware on your Printrboard.
+
+To order your own PCB's this git repository can be downloaded as a zip and uploaded directly to [OSHPark](https://www.oshpark.com/) where you can order three boards for less than $30.
+
+![Printrboard Pi Link](http://garthvh.com/assets/img/printrboardpilink/pilink_oshpark.png "Printrboard Pi Link Order")
 
 All parts but L1 (inductor) can be sourced from Digikey. A pre populated [shopping cart](http://www.digikey.com/short/71w84q) with enough parts to build this (minus ribbon cable and 16awg wire) is available.   NOTE THIS CART IS FOR REV B.  Rev A used a different fuse holder.
 
@@ -61,7 +71,7 @@ Modify /etc/init.d/octoprint to add the following lines in the do_start() functi
     gpio -g write 2 0
 
 
-## DISCLAIMERS
+# DISCLAIMERS
 
 Although using a Raspberry Pi with [Octoprint](http://octoprint.org/) is a fabulous way to run a print job semi-unattended, and this board enables additional features in that regard, it is **categorically not endorsed/recommended** as a safe practice.  The additional safety and remote shutdown features should not encourage you to leave the printer at home/work printing.  For those of you who void warranties, tear up manuals, and eat your steak rare -- hopefully this provides additional safety margin.
 
