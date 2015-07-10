@@ -44,18 +44,22 @@ It is expected that a short ribbon cable can be supplied for users who want the 
 
 In order to enable the hardware UART on the Printrboard (rather than the USB CDC serial port), use of this board requires a special build of firmware.  Standard firmware versions will not communicate directly, although it would be possible to communicate using the traditional micro USB cable to one of the Raspberry Pi's USB ports.
 
+There are instructions available for flashing the Printrboard firmware available from [Printrbot support](http://help.printrbot.com/Guide/How+to+Reflash+Firmware).
+
 * [Rev D Firmware](https://github.com/j-laird/Marlin/releases/tag/PiBachelor--V3)
 * [Rev F4/F5 Firmware](https://github.com/j-laird/Marlin/releases/tag/PiLassen-V3)
 
 ### RASPBERRY PI / OCTOPRINT SETUP
 
-The hardware UART on the RPI must be enabled.  Run raspi-config and select Advanced Options.  Under Serial, disable login over serial port.
+The hardware UART on the Raspberry Pi must be enabled.  Run raspi-config and select Advanced Options.  Under Serial, disable login over serial port.
 
 Modify /boot/config.txt to add init_uart_clock=4000000
 
-Install WiringPi using the following [instructions](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/).
+You may need to add the UART serial port to octoprint under Settings > Serial Connection.  In the Additional serial ports section add /dev/ttyAMA0 so that you can select the UART port in OctoPrint.  250000 is the baudrate that has been verified to be working.
 
-Modify ~/.octoprint/config.yaml to add the following lines under system: actions:
+Install the wiringPi library using the following [instructions](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/).
+
+Modify ~/.octoprint/config.yaml to add the following lines under system: actions to add the commands to the OctoPrint System menu.
 
     - action: shutdown printbot
       command: gpio -g write 2 1
