@@ -1,11 +1,10 @@
 # Printrboard-Pi-Link
-Printed Circuit Board Assembly linking a Printrbot Printrboard and Raspberry Pi. Originally conceived as a way to connect a model A+ Raspberry Pi to a Printrboard without using the single USB port it has been expanded to include several convenience and safety features.
+ The Printrboard-Pi-Link is a Printed Circuit Board Assembly that connects a Printrbot Printrboard with a newer-model Raspberry Pi (B+, Raspberry Pi 2 B, etc).
 
 ![Printrboard Pi Link](http://garthvh.com/assets/img/printrboardpilink/printrboard_pi_link_01.jpg "Printrboard Pi Link")
 
-## Overview
-
-The Printrboard-Pi-Link is intended to connect a Printrbot Printrboard with a newer-model Raspberry Pi (B+, Raspberry Pi 2 B, etc).  It has the following unique features:
+## Feature Overview
+The Printrboard-Pi-Link has the following unique features:
 * Accepts 12v input on either 4-pin(ATX 12V) or 6-pin(PCI-E) Molex Minifit-Jr connectors
 * Supplies switched (see below) 12V power to Printrboard via screw-type Phoenix connector
 * Produces high-current (3A max) 5V power for Raspberry Pi (no wall-wart needed)
@@ -57,6 +56,8 @@ Modify /boot/config.txt to add init_uart_clock=4000000
 
 You may need to add the UART serial port to octoprint under Settings > Serial Connection.  In the Additional serial ports section add /dev/ttyAMA0 so that you can select the UART port in OctoPrint.  250000 is the baudrate that has been verified to be working.
 
+![Octoprint serial connection](http://garthvh.com/assets/img/printrboardpilink/octoprint_connection.png "Octoprint serial connection settings")
+
 Install the wiringPi library using the following [instructions](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/).
 
 Modify ~/.octoprint/config.yaml to add the following lines under system: actions to add the commands to the OctoPrint System menu.
@@ -67,6 +68,8 @@ Modify ~/.octoprint/config.yaml to add the following lines under system: actions
     - action: poweron printrbot
       command: gpio -g write 2 0
       name: Enable Printrboard 12V supply
+
+![Octoprint System Menu](http://garthvh.com/assets/img/printrboardpilink/octoprint_system_menu.png "Octoprint System Menu")
 
 Modify /etc/init.d/octoprint to add the following lines in the do_start() function, right above RETVAL="$?"
 
